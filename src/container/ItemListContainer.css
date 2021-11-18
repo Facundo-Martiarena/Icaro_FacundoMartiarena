@@ -1,0 +1,17 @@
+.contenedorPadre{
+  
+  position: relative;
+  
+}
+
+.contenedorHijo{
+  text-align: center;
+  margin: 0 auto;
+  width: 25%;
+  position: absolute;
+  top: 25%;
+  left: 37.5%;
+  
+}
+
+

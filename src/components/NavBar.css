@@ -1,0 +1,46 @@
+ul {
+    
+    background: linear-gradient(#046e60, #5D9B9B);    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  
+  
+  li {
+    
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 40px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+   
+    background: linear-gradient(#5D9B9B, #046e60);
+    border-radius: 40%;  
+  }
+  
+  .addToCart:hover {
+    background: linear-gradient(#5D9B9B, #046e60);
+    border-radius: 40%;    
+  }
+  
+  .Header-logo {
+    
+    filter: brightness(1.5);
+    mix-blend-mode: multiply;
+    padding: 0px 20px;
+    height: 15vmin;
+    pointer-events: none;
+    float: left;
+  }

@@ -1,0 +1,37 @@
+.item{
+    background:rgba(193, 197, 219, 0.2);
+    border: 0.5px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 100%;
+    height: 18em;
+    border-color: black;
+    margin-top: 10px;
+    margin-left: 0%;
+}
+
+.imag{
+    filter: brightness(1.0);
+    mix-blend-mode: multiply;
+}
+
+.btn{
+    
+    background: linear-gradient(#333333, #020505);
+    color: white;
+}
+
+.btn:hover{
+    background: linear-gradient(#5D9B9B, #046e60);
+    color: white;
+}
+
+
+
+.detail{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+
