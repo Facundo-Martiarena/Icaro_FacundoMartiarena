@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Item from './../components/Item';
 
@@ -9,4 +10,6 @@ const ItemDetail = ({product}) => {
     )
 }
 
-export default ItemDetail
+
+
+export default ItemDetail;
