@@ -55,7 +55,7 @@ const ItemListContainer = () => {
     return (
         <div className="contenedorPadre">
             <div className="contenedorHijo">
-                <h1>¡NUEVOS ARRIBOS!</h1>
+                {/* <h1>¡NUEVOS ARRIBOS!</h1> */}
                 {loading ? <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> : <ItemList products = { products }/>}
                 
             </div>
