@@ -1,22 +1,26 @@
 import './App.css';
 import NavBar from './components/NavBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PagPricipal from './components/PagPricipal';
 import ItemListContainer from './container/ItemListContainer';
+import Cart from './Cart/Cart';
+import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <NavBar />
-      </header>
-      <body className="App-body">
-        <PagPricipal/>
-        <h1>¡NUEVOS ARRIBOS!</h1>
-        <ItemListContainer />
-      </body>
-
-    </div>
+    <BrowserRouter>
+      <div className="App">
+          <NavBar />
+          <Routes> 
+            <Route exact path="/" element={<PagPricipal />} />
+            <Route exact path="/products/" element={<ItemListContainer />} />
+            <Route exact path="/categoria/:idCategoria" element={<ItemListContainer />} />
+            <Route exact path="/detalle/:idProducto" element={<ItemDetailContainer />} />
+            <Route exact path="/cart" element={<Cart />} />
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 
 }

@@ -26,13 +26,15 @@ ul {
 
   li a:hover {
    
-    background: linear-gradient(#5D9B9B, #046e60);
-    border-radius: 40%;  
+    color: rgb(10, 237, 245);
+    /* background: linear-gradient(#5D9B9B, #046e60); */
+    /* border-radius: 40%;   */
   }
   
   .addToCart:hover {
-    background: linear-gradient(#5D9B9B, #046e60);
-    border-radius: 40%;    
+    
+    /* background: linear-gradient(#5D9B9B, #046e60);
+    border-radius: 40%;     */
   }
   
   .Header-logo {

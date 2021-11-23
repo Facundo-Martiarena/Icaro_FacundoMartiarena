@@ -11,6 +11,10 @@
     margin-left: 0%;
 }
 
+.item:hover{
+    border-color: black;
+}
+
 .imag{
     filter: brightness(1.0);
     mix-blend-mode: multiply;

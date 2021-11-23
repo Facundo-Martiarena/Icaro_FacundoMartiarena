@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 import Item from './Item';
 import './ItemList.css'
 
 
 function ItemList ({products}) {
 
-    console.log(products);
-
+    
 
     return (
         <>
@@ -16,11 +15,16 @@ function ItemList ({products}) {
                             key={ prod.id } >
                         
                         <Item 
+                                id={ prod.id }
                                 photoURL={ prod.photoURL } 
                                 marca={ prod.marca } 
                                 model={ prod.model } 
+                                price={ prod.price }
                                 ancho = { prod.ancho } 
+                                stock = { prod.stock }
+                                categoria = { prod.categoria }
                                 btn = { prod.btn }
+                                
                             
                         
                         />
