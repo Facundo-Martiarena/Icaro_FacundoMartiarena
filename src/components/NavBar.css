@@ -39,10 +39,10 @@ ul {
   
   .Header-logo {
     
-    filter: brightness(1.5);
-    mix-blend-mode: multiply;
+    /* filter: brightness(1.5); */
+    /* mix-blend-mode: multiply; */
     padding: 0px 20px;
-    height: 15vmin;
+    height: 14vmin;
     pointer-events: none;
     float: left;
   }

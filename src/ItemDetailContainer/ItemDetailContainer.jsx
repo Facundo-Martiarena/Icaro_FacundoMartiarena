@@ -1,73 +1,39 @@
-import React from 'react'
-import {useState ,useEffect} from 'react';
-import { useParams } from 'react-router'
-import { getFetch } from '../bd/getFetch';
-import ItemDetail from './ItemDetail';
+import React, { useState, useEffect } from "react";
+import './../container/ItemListContainer.jsx';
+import { useParams } from "react-router-dom";
+import { itemPromise } from "./../bd/getFetch";
+import ItemDetail from "./ItemDetail";
+
+
+
 
 const ItemDetailContainer = () => {
-    
-    const { idProducto } = useParams
-    const [product, setProduct] = useState({})
-    const [loading, setLoading] = useState(true)
+  const [item, setItem] = useState({});
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true)
+//   console.log(id);
 
+  useEffect(() => {
+    itemPromise.then((resp) => {
+      setItem(resp.find(item => item.id.toString() === id));
+      console.log(item);
+    })
+    .catch(err => console.log(err))
+    .finally(() => setLoading(false))
 
-    useEffect(() => {
+  return () => {
+    console.log('clean')
+  }
+  }, [id,item]);
 
-        // if(idProducto){
-
-            const getIdProducto = new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve(idProducto)
-                }, 2000)
-            })
-
-            getIdProducto.then(id => {
-                setProduct(getFetch(id))
-            })
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-
-            return () => {
-                console.log('cleanup')
-
-            }
-
-        //     getFetch                            //api Fetch()
-        //     .then(data => {   
-        //         setProduct(data.filter(prod => prod.id === idProducto));
-        //     })
-        //     .catch(err => console.log(err))    
-        //     .finally(()=> setLoading(false))
-            
-        //     return () => {
-        //         console.log('clean')
-        //     }
-
-        // }else{
-
-        //     getFetch                           //api Fetch()
-        //     .then(data => {
-                     
-        //     })
-        //     .catch(err => console.log(err))    
-        //     .finally(()=> setLoading(false))
-            
-        //     return () => {
-        //         console.log('clean')
-        //     }
-        // }
-    },[idProducto])
-
-    console.log(product)
-    
-    
-    return (
-        <>
-            <div>
-                {loading ? 'Cargando...' : <ItemDetail product = {product}/>}
+  return (
+    <div className="contenedorPadre">
+            <div className="contenedorHijo">
+                {loading ? <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> : <ItemDetail item = { item }/>}
+                
             </div>
-        </>
-    )
-}
+        </div>
+  );
+};
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

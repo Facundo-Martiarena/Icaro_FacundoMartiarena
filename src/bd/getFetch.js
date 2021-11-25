@@ -8,10 +8,22 @@ const detalleProd = [
 ];
 
 
-export const getFetch = new Promise((resolve, reject) => {
+export const getFetch = new Promise((resolve) => {
     setTimeout(() => {
         resolve(detalleProd)
     }, 2000) 
        
 })
+
+export const itemPromise = new Promise((res) => {
+    setTimeout(() => {
+      res(detalleProd);
+    }, 2000);
+ 
+  });
+
+export default itemPromise;
+  
+  
+
  

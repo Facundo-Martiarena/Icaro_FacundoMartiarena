@@ -10,8 +10,9 @@
 .App-logo {
     
     filter: brightness(1.1);
-    mix-blend-mode: multiply;
-    height: 40vmin;
+    /* mix-blend-mode: multiply; */
+    
+    height: 30vmin;
     pointer-events: none;
   }
   
