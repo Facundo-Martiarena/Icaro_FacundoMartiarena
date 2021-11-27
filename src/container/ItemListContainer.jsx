@@ -1,10 +1,10 @@
 
 import './ItemListContainer.css';
 import {useState ,useEffect} from 'react';
-import {getFetch} from './../bd/getFetch';
+import {fetch} from './../bd/getFetch';
 import { Link, useParams } from 'react-router-dom';
 import React from 'react'
-import ItemList from './../components/ItemList.jsx';
+import ItemList from './ItemList.jsx';
 
 
 
@@ -22,11 +22,13 @@ const ItemListContainer = () => {
 
     useEffect(() => {
 
+        
+
         if(idCategoria){
 
-            getFetch                            //api Fetch()
+            fetch                            //api Fetch()
             .then(data => {
-                console.log('llamada Api')   
+                console.log('Funciona Filter')   
                 setProducts(data.filter(prod => prod.categoria === idCategoria));
             })
             .catch(err => console.log(err))    
@@ -38,7 +40,7 @@ const ItemListContainer = () => {
 
         }else{
 
-            getFetch                            //api Fetch()
+            fetch                            //api Fetch()
             .then(data => {
                 console.log('llamada Api')   
                 setProducts(data)     
@@ -57,7 +59,11 @@ const ItemListContainer = () => {
         <div className="contenedorPadre">
             <div className="contenedorHijo">
                 {/* <h1>¡NUEVOS ARRIBOS!</h1> */}
-                {loading ? <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> : <ItemList products = { products }/>}
+                {loading 
+                    ?
+                <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> 
+                    :
+                <ItemList products = { products }/>}
                 
             </div>
         </div>

@@ -18,13 +18,13 @@ export const NavBar = () => {
                 <Link to="/cart">
                     <CartWidget/>
                 </Link>
-                <Link to="/products/niño">
+                <Link to="/categoria/niño">
                     <li><a href="contact.asp">Niño</a></li>
                 </Link>
-                <Link to="/products/mujer">
+                <Link to="/categoria/mujer">
                     <li><a href="contact.asp">Mujer</a></li>
                 </Link>
-                <Link to="/products/hombre">
+                <Link to="/categoria/hombre">
                     <li><a href="contact.asp">Hombre</a></li>
                 </Link>
                 <Link to='/products'>

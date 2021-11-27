@@ -5,6 +5,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    width: 100%;
   }
 
   
@@ -20,7 +21,7 @@ ul {
     display: flex;
     align-items: center;
     text-align: center;
-    padding: 40px 16px;
+    padding: 30px 16px;
     text-decoration: none;
   }
 
@@ -42,7 +43,7 @@ ul {
     /* filter: brightness(1.5); */
     /* mix-blend-mode: multiply; */
     padding: 0px 20px;
-    height: 14vmin;
+    height: 10vmin;
     pointer-events: none;
     float: left;
   }

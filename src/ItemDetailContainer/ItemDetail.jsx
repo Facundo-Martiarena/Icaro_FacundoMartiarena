@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import './../components/Item.css'
+import './../container/Item.css'
+// import Item from './../container/Item.jsx';
 
 
-const ItemDetail = ( item ) => {
+export const ItemDetail = ( {item} ) => {
 
 
-  const [irCart, setIrCart] = useState(false);
+  // const [irCart, setIrCart] = useState(false);
   
-  const onAdd = (contador) => {
-    console.log("Udselecciono ", contador);
-    setIrCart(true);
-  };
+  // const onAdd = (contador) => {
+  //   console.log("Udselecciono ", contador);
+  //   setIrCart(true);
+  // };
 
   // const [string, setString] = useState('');
   //   function mostrarModelo(){
@@ -18,10 +19,12 @@ const ItemDetail = ( item ) => {
         
   //   }
 
-    console.log(item.id);
 
 
   return (
+
+
+        
         <>
                 <div className="item" /*onClick={mostrarModelo}*/>
                     <div  key={item.id} className="card">
@@ -44,4 +47,3 @@ const ItemDetail = ( item ) => {
   );
 };
 
-export default ItemDetail;
