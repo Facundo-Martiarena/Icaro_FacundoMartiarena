@@ -7,7 +7,7 @@ export const detalleProd = [{
             marca:"New Balance", 
             model:"RC Elite", 
             ancho:"200", 
-            price:"U$S 200", 
+            price:"200", 
             stock:"5", 
             categoria:"hombre"
     },
@@ -18,7 +18,7 @@ export const detalleProd = [{
             marca:"Nike", 
             model:"Air Zoom Alphafly NEXT%", 
             ancho:"197", 
-            price:"U$S 200",
+            price:"200",
             stock:"5",
             categoria:"hombre"
     },
@@ -29,7 +29,7 @@ export const detalleProd = [{
             marca:"Adidas", 
             model:"Adizero Adios Pro", 
             ancho:"225", 
-            price:"U$S 200",
+            price:"200",
             stock:"5", 
             categoria:"mujer"
     },
@@ -40,7 +40,7 @@ export const detalleProd = [{
             marca:"Asics", 
             model:"Kayano 26", 
             ancho:"225", 
-            price:"U$S 200",
+            price:"200",
             stock:"5", 
             categoria:"mujer"
     }

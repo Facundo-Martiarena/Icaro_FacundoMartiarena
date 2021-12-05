@@ -1,23 +1,28 @@
 import React, { useState } from "react";
-import './../container/Item.css'
-// import Item from './../container/Item.jsx';
+import './../container/Item.css';
+import ItemCount from './../components/Count/ItemCount.jsx';
+
+import { useCartContext } from './../context/CartContext';
+import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 export const ItemDetail = ( {item} ) => {
 
 
-  // const [irCart, setIrCart] = useState(false);
-  
-  // const onAdd = (contador) => {
-  //   console.log("Udselecciono ", contador);
-  //   setIrCart(true);
-  // };
+    const [count, setCount] = useState(1);
+    const { cartList, agregarProducto } = useCartContext()
 
-  // const [string, setString] = useState('');
-  //   function mostrarModelo(){
-  //       setString(item.model);
+    
+
+    function onAdd(cant) {
+        setCount(cant)
+        console.log(cant)
+        agregarProducto({ producto: item, quantity: cant} )
         
-  //   }
+    }
+    console.log(cartList)
+
 
 
 
@@ -25,25 +30,33 @@ export const ItemDetail = ( {item} ) => {
 
 
         
-        <>
-                <div className="item" /*onClick={mostrarModelo}*/>
+        <Row>
+          <Col>
+            <div className="item" > 
                     <div  key={item.id} className="card">
-                        <div className="detail">
-                            
-                            <img className="imag" src={item.photoURL} width={item.ancho} alt="foto"/>
-                            <p className="marca">{item.marca} </p>
-                            {/* {string !== '' && <Label>{string}</Label> } */}
-                            {/* <p className="model">{item.model} </p> */}
-                            <p className="price">{item.price}</p>
-                            {/* <ItemCount initial='1' stock={item.stock} onAdd={onAdd}/> */}
-                            
-                            {/* <button className="btn" onClick={mostrarModelo}>Detalles</button> */}
-                            
-                        </div>
+                            <img className="imag" src={item.photoURL} alt="foto"/>
+                        
                     </div>
                 </div>
+          </Col>
 
-        </>
+          <Col>
+            <div className="item" style={{height: 200, background:(168, 169, 177, 0.2)}}>
+              <h5 className="marca">{item.marca} </h5>
+              {/* {string !== '' && <Label>{string}</Label> } */}
+              <h5 className="model">{item.model} </h5>
+              <h5 className="price">U$S{" "}{item.price}</h5>
+                   
+              <Col>
+                <ItemCount initial='1' stock={item.stock} onAdd={onAdd}/>
+              </Col>
+            </div>
+          </Col>
+          
+                
+         
+
+        </Row>
   );
 };
 

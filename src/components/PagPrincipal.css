@@ -1,6 +1,7 @@
 .PagPrincipal{
-  background: linear-gradient(#5D9B9B, #046e60);
+  background: linear-gradient(#313535, #046e60);
   text-align: center;
+
 }
 .App-link {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -24,6 +25,7 @@
     /* background-color: ; */
     min-height: 100vh;
     flex-direction: column;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
