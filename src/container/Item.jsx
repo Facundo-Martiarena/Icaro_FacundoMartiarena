@@ -14,31 +14,18 @@ export default function Item ({item}) {
         
     }
 
-
-    function onAdd(cant){
-        console.log(cant);
-    }
-
-
     console.log(item);
     return (
-        <>
-            
-                <Link to={`/item/${item.id}`}>
+        <>        
+                <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>
                     <div className="item" onClick={mostrarModelo}>
                                 <img className="imag" src={item.photoURL} width={item.ancho} alt="foto"/>
                         <div  key={item.id} className="card">
-                            <div className="detail">
-                                
-                                <p className="marca">{item.marca} </p>
+                            
+                                <h5 className="marca">{item.marca} </h5>
                                 {string !== '' && <Label>{string}</Label> }
-                                <p className="model">{item.model} </p>
-                                {/* <p className="price">{item.price}</p> */}
-                                {/* <ItemCount initial='1' stock={elem.stock} onAdd={onAdd}/> */}
-                                
-                                {/* <button className="btn" onClick={mostrarModelo}>Detalles</button> */}
-                                
-                            </div>
+                                <p className="model">{item.model} </p>                                
+                            
                         </div>
                     </div>
                 </Link>

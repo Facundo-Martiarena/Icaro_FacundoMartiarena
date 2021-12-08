@@ -15,7 +15,8 @@ const CartContextProvider = ({ children }) => {
     const agregarProducto = (item, id) => {
         if(isInCart(item.producto.id)){
 
-            setCartList([...cartList]);
+            setCartList([...cartList])
+
         } else {
             setCartList([...cartList, item])
         }
@@ -25,21 +26,30 @@ const CartContextProvider = ({ children }) => {
         return cartList.some(obj => obj.producto.id === id)
     }
 
-    const varciarCarrtio=()=>{
+    const vaciarCarrtio=()=>{
         setCartList([])
     }
 
-    const precioTotal =()=>{
-        return cartList.reduce((acum, valor)=>(acum + (valor.cantidad * valor.price)), 0) 
+    const borrarItem=(id)=>{
+        setCartList(cartList.filter(item=>item.producto.id!==id))
     }
 
+    const precioTotal =()=>{
+        return cartList.reduce((acum, valor)=>(acum + (valor.quantity * valor.producto.price)), 0) 
+    }
+
+    const totalItems =()=>{
+        return cartList.reduce((acum, valor)=> acum = acum + valor.quantity, 0) 
+    }
     
     return(
         <CartContext.Provider value={{
             cartList, 
             agregarProducto,
-            varciarCarrtio,
-            precioTotal
+            vaciarCarrtio,
+            totalItems,
+            precioTotal,
+            borrarItem
         }}>
             { children }
         </CartContext.Provider>

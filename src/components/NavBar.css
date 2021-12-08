@@ -5,8 +5,28 @@ ul {
     margin: 0;
     overflow: hidden;
     width: 100%;
+    
   }
 
+  .cart {
+    position: relative;
+  }
+  
+  #cart_menu_num {
+    
+    position: absolute;
+    top: 19px;
+    left: -200%;
+    background: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
   
   
   li {
