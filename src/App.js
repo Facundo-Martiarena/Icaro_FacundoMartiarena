@@ -1,4 +1,5 @@
 import './App.css';
+import React, { Component }  from 'react';
 import NavBar from './components/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PagPricipal from './components/PagPricipal';

@@ -1,4 +1,5 @@
 import { useState, createContext, useContext } from 'react';
+import React, { Component }  from 'react';
 
 const CartContext= createContext([]);
 
@@ -12,18 +13,22 @@ const CartContextProvider = ({ children }) => {
 
     const [cartList, setCartList] = useState([])
 
-    const agregarProducto = (item, id) => {
-        if(isInCart(item.producto.id)){
+    const agregarProducto = (item) => {
 
-            setCartList([...cartList])
+        
+        if (isInCart(item.producto.idProd)) {
+            const index = cartList.findIndex(i => i.producto.idProd === item.producto.idProd)
+            const qtyOld = cartList[index].quantity
+  
+            cartList.splice(index, 1)
+            setCartList([...cartList, { ...item, quantity: item.quantity + qtyOld}])
+          } else {
+            setCartList([...cartList, {...item, quantity: item.quantity}])
+          }
+      }
 
-        } else {
-            setCartList([...cartList, item])
-        }
-
-    }
     const isInCart = (id) => {
-        return cartList.some(obj => obj.producto.id === id)
+        return cartList.some(obj => obj.producto.idProd === id)
     }
 
     const vaciarCarrtio=()=>{

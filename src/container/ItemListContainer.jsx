@@ -3,6 +3,7 @@ import './ItemListContainer.css';
 import {useState ,useEffect} from 'react';
 import {fetch} from './../bd/getFetch';
 import { Link, useParams } from 'react-router-dom';
+import { getFirestore } from '../service/getFirestore'
 import React from 'react'
 import ItemList from './ItemList.jsx';
 
@@ -12,7 +13,7 @@ import ItemList from './ItemList.jsx';
 const ItemListContainer = () => {
 
     
-    const[products, setProducts] = useState([]);
+    const[products, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
 
    
@@ -21,36 +22,23 @@ const ItemListContainer = () => {
 
 
     useEffect(() => {
-
+        
+        const dbQuery = getFirestore()
         
 
         if(idCategoria){
 
-            fetch                            //api Fetch()
-            .then(data => {
-                console.log('Funciona Filter')   
-                setProducts(data.filter(prod => prod.categoria === idCategoria));
-            })
-            .catch(err => console.log(err))    
-            .finally(()=> setLoading(false))
-            
-            return () => {
-                console.log('clean')
-            }
+            dbQuery.collection('productos').where('categoria', '==', idCategoria).get() // traer todo
+                .then(data => setProduct(   data.docs.map(pro => ( { id: pro.id, ...pro.data() } ))   ))
+                .catch(err=> console.log(err))
+                .finally(()=> setLoading(false)) 
 
         }else{
 
-            fetch                            //api Fetch()
-            .then(data => {
-                console.log('llamada Api')   
-                setProducts(data)     
-            })
-            .catch(err => console.log(err))    
-            .finally(()=> setLoading(false))
-            
-            return () => {
-                console.log('clean')
-            }
+            dbQuery.collection('productos').get() // traer todo
+                .then(data => setProduct(   data.docs.map(pro => ( { id: pro.id, ...pro.data() } ))   ))
+                .catch(err=> console.log(err))
+                .finally(()=> setLoading(false))
         }
     },[idCategoria])
 

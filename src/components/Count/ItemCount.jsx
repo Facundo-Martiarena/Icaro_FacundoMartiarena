@@ -11,6 +11,8 @@ const ItemCount = ({stock, onAdd}) => {
     function Sumar(){
         if(count < stock){
             setCount(count + 1);
+        }else{
+            alert('No hay stock suficiente');
         }
     }
         
@@ -18,7 +20,7 @@ const ItemCount = ({stock, onAdd}) => {
         if(count > 0){
             setCount(count - 1);
             
-        }else if(count < 1){
+        }else{
             alert('No tiene más stock')
         }
     }

@@ -14,7 +14,6 @@ export default function Item ({item}) {
         
     }
 
-    console.log(item);
     return (
         <>        
                 <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>

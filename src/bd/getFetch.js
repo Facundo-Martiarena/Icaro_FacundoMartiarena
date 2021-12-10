@@ -61,7 +61,6 @@ export const itemPromise = new Promise((res, reject) => {
         setTimeout(() => {
           
                 res(detalleProd);
-                console.log("promise");
           
         }, 2000);
      
