@@ -20,12 +20,24 @@ export const NavBar = () => {
                 </Link>
                 
                 <Link to="/cart">
-                    <li><a className="cart" title="Qty Cart">
-                        <span id="cart_menu_num" data-action="cart-can" class="badge rounded-circle">{ totalItems() !== 0 && totalItems() }</span>
-                    </a></li>
+
+                    {totalItems() > 0 ?
+
+                            <>
+                                <li><a className="cart" title="Qty Cart">
+                                    <span id="cart_menu_num" data-action="cart-can" class="badge rounded-circle">{ totalItems() }</span>
+                                </a></li>
+                                <CartWidget/>
+                            </>
+                        :
+
+                        <>
+                            <li><a className="cart" title="Qty Cart"></a></li>
+                            <li><a className="addToCart" alt="GO TO CART"/></li>
+                        </>
+                    }
                 </Link>
                 <Link to="/cart">
-                    <CartWidget/>
                 </Link>
                     
                 <Link to="/categoria/niño">
