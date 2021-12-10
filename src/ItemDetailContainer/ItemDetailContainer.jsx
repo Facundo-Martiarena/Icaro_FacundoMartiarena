@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { itemPromise } from "./../bd/getFetch.js";
 import { getFirestore } from '../service/getFirestore.js'
 import {ItemDetail} from "./ItemDetail";
 
@@ -14,8 +13,6 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   const { idProd } = useParams();
-//   console.log(id);
-
   useEffect(() => {
     const db = getFirestore()
     db.collection('productos').doc(idProd).get()
@@ -29,7 +26,6 @@ const ItemDetailContainer = () => {
     // eslint-disable-next-line       
   },[])  
 
-  console.log(item);
 
   return (
     <div className="contenedorPadre">
