@@ -26,7 +26,7 @@ function Cart(item) {
                         
                         { cartList.map(prod => 
                             <h5 key={prod.producto.id}>
-                                {"Cantidad: "}{prod.quantity} {" - Producto: "} {prod.producto.marca} {" - Precio: U$S"} {(prod.producto.price * prod.quantity)} {<button className="btn" onClick={()=> borrarItem(prod.producto.id)}>BORRAR ARTÍCULO</button>}
+                                {"Cantidad: "}{prod.quantity} {" - Producto: "} {prod.producto.marca} {" - Precio: U$S"} {(prod.producto.price * prod.quantity)} {<button className="btn" onClick={()=> borrarItem(prod.producto.idProd)}>BORRAR ARTÍCULO</button>}
                             </h5>)
                         }
                         

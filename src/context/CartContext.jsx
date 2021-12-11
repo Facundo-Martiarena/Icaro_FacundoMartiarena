@@ -36,7 +36,7 @@ const CartContextProvider = ({ children }) => {
     }
 
     const borrarItem=(id)=>{
-        setCartList(cartList.filter(item=>item.producto.id!==id))
+        setCartList(cartList.filter(item=>item.producto.idProd!==id))
     }
 
     const precioTotal =()=>{
