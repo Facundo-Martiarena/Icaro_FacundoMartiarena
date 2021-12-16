@@ -41,16 +41,16 @@ export const NavBar = () => {
                 </Link>
                     
                 <Link to="/categoria/niño">
-                    <li><a href="niño">Niño</a></li>
+                    <li><a href="kids">Kids</a></li>
                 </Link>
                 <Link to="/categoria/mujer">
-                    <li><a href="mujer">Mujer</a></li>
+                    <li><a href="women">Women</a></li>
                 </Link>
                 <Link to="/categoria/hombre">
-                    <li><a href="hombre">Hombre</a></li>
+                    <li><a href="men">Men</a></li>
                 </Link>
                 <Link to='/products'>
-                    <li><a href="productos">Productos</a></li>
+                    <li><a href="products">Products</a></li>
                 </Link>
                 <Link to='/'>
                     <li><a href="home">Home</a></li>

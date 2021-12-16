@@ -9,6 +9,7 @@
     margin-top: 10px;
     margin-left: 0%;
     
+    
 }
 
 .item:hover{
@@ -38,7 +39,7 @@
     color: white;
 }
 
-.marca{
+.brand{
     color: #333333;
     font-size: 1.3em;
     text-decoration: none;

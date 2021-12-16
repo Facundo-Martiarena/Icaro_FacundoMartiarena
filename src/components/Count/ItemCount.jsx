@@ -1,5 +1,4 @@
 import React from 'react';
-import { useCartContext } from '../../context/CartContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,24 +7,24 @@ const ItemCount = ({stock, onAdd}) => {
     const [count, setCount] = useState(1);
     const [state, setState] = useState(true);
     
-    function Sumar(){
+    function add(){
         if(count < stock){
             setCount(count + 1);
         }else{
-            alert('No hay stock suficiente');
+            alert('Not enough stock');
         }
     }
         
-    function Restar(){
+    function subtract(){
         if(count > 0){
             setCount(count - 1);
             
         }else{
-            alert('No tiene más stock')
+            alert('No more stock')
         }
     }
     
-    function Agregar(){
+    function addToCart(){
         onAdd(count);
         stock = stock - count;
         setCount(1);  
@@ -36,18 +35,18 @@ const ItemCount = ({stock, onAdd}) => {
     return (
         <>
             <section className="itemCount">
-                <button className="btn" onClick={Sumar}>+</button>
+                <button className="btn" onClick={add}>+</button>
                     {count}
-                <button className="btn" onClick={Restar}>-</button>
+                <button className="btn" onClick={subtract}>-</button>
                 {state ?
-                    <button className="btn" onClick={Agregar}>AGREGAR AL CARRITO</button>
+                    <button className="btn" onClick={addToCart}>   ADD TO CART   </button>
                                             :
                     <>
                         <Link to="/cart">
-                            <button className="btn">TERMINAR COMPRA</button>
+                            <button className="btn">COMPLETE PURCHASE</button>
                         </Link> 
                         <Link to="/products">
-                            <button className="btn">CONTINUAR COMPRANDO</button>
+                            <button className="btn">CONTINUE SHOPPING</button>
                         </Link>
                     </>
                 }   

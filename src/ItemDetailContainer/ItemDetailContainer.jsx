@@ -17,7 +17,6 @@ const ItemDetailContainer = () => {
     const db = getFirestore()
     db.collection('productos').doc(idProd).get()
     .then( res => {        
-      // setItem(prodEncontrado.find( product => product.id.toString() === idProd ));
         setItem( {idProd: res.id, ...res.data()} )
     })    
     .catch(err => console.log(err))
@@ -28,8 +27,8 @@ const ItemDetailContainer = () => {
 
 
   return (
-    <div className="contenedorPadre">
-            <div className="contenedorHijo">
+    <div className="containerFather">
+            <div className="containerChild">
                 {loading 
                   ?
                 <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> 

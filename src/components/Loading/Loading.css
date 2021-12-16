@@ -1,9 +1,9 @@
-.divPadre{
+.divFather{
     height: 100vh;
     position: relative;
 }
 
-.divHijo{
+.divChild{
     margin: 0;
     position: absolute;
     top: 50%;

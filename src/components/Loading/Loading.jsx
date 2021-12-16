@@ -4,8 +4,8 @@ import './../components/Loading.css'
 
 function Loading() {
     return (
-        <div className="divPadre">
-            <div className="divHijo">
+        <div className="divFather">
+            <div className="divChild">
                 <Spinner color="primary"/>
             </div>
         </div>

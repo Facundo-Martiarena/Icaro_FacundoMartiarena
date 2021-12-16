@@ -1,14 +1,14 @@
 import React from 'react'
 import logo from './logo.png';
-import './PagPrincipal.css'
+import './HomePage.css'
 
-const PagPricipal = () => {
+const HomePage = () => {
     return (
-        <div className="PagPrincipal">
+        <div className="HomePage">
             <header className="PPal-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    Bienvenidos a ÍCARO, la mejor página de compra de calzados deportivos.
+                    Welcome to ÍCARO, the best place to buy sports shoes.
                 </p>
                 
             </header>
@@ -17,4 +17,4 @@ const PagPricipal = () => {
     )
 }
 
-export default PagPricipal
+export default HomePage

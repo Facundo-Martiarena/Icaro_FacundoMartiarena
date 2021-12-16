@@ -12,7 +12,7 @@ export const ItemDetail = ( {item} ) => {
     const [stock, setStock] = useState(0);
 
     const [count, setCount] = useState(1);
-    const { cartList, agregarProducto } = useCartContext()
+    const { cartList, addProduct } = useCartContext()
 
     
 
@@ -20,10 +20,10 @@ export const ItemDetail = ( {item} ) => {
        
       setCount(cant)
       if (item.stock === stock) {
-          alert("No hay stock suficiente")
+          alert("Not enough stock")
       }else{
           setStock(stock + 1)
-          agregarProducto({ producto: item, quantity: cant })
+          addProduct({ product: item, quantity: cant })
       
       }
   
@@ -39,7 +39,7 @@ export const ItemDetail = ( {item} ) => {
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={item.photoURL} />
           <Card.Body>
-            <Card.Title>{item.marca}</Card.Title>
+            <Card.Title>{item.brand}</Card.Title>
             <Card.Text>
                 {item.model}               
             </Card.Text>

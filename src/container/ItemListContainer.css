@@ -1,11 +1,13 @@
-.contenedorPadre{
-  
+.containerFather{
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
+  
   
   
 }
 
-.contenedorHijo{
+.containerChild{
   text-align: center;
   margin: 0 auto;
   width: 25%;
