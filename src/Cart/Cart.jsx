@@ -36,6 +36,7 @@ function Cart(item) {
         .catch(err=> console.log(err))
 
 
+        
 
     }
     
@@ -66,7 +67,10 @@ function Cart(item) {
                             {`Total Price: U$S ${totalPrice()}`} 
                                 
                         </h5>    
-                        
+                            /*para completar formulario */
+                            {/* <input type='text' name='name' placeholder='name' value={formData.name}/>
+                            <input type='text' name='phone'placeholder='tel' value={formData.phone}/>
+                            <input type='email' name='email'placeholder='email' value={formData.email}/> */}
                         </div>
                     </Col>
 
