@@ -29,6 +29,17 @@
     color: white;
 }
 
+.btn-add{
+    background: linear-gradient(#333333, #020505);
+    color: white;
+    width: 100%; 
+}
+
+.btn-add:hover{
+    background: linear-gradient(#5D9B9B, #046e60);
+    color: white;
+}
+
 .btn-white{
     background: linear-gradient(#333333, #020505);
     color: white;

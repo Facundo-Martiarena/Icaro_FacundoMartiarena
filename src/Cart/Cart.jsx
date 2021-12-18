@@ -1,14 +1,30 @@
 import { Row, Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCartContext } from "./../context/CartContext";
-import React from 'react';
-import { getFirestore } from '../service/getFirestore.js'
-import firebase from 'firebase'
+import React, { useState } from 'react';
+import { getFirestore } from '../service/getFirestore.js';
+import firebase from 'firebase';
+import Modal from './../components/Modal/Modal';
 
 
 function Cart(item) {
 
+    const [idOrder, setIdOrder] = useState('')
+
     const {cartList, emptyCart, totalPrice, deleteItem} = useCartContext()
+
+    const [active, setActive] = useState(false);
+
+    const toggle = () => {
+        setActive(!active);
+    }
+
+    const [formData, setFormData] = useState({
+        name:'',
+        phone:'',
+        email: ''
+    })
+ 
 
     const generateOrder = (e) => {
         e.preventDefault()
@@ -18,7 +34,7 @@ function Cart(item) {
         order.date = firebase.firestore.Timestamp.fromDate(new Date());  
 
 
-        order.buyer = {name: "Juan", email:"juanperez@gmail.com" , phone: "123456789"}
+        order.buyer = formData;
         order.total = totalPrice()
 
       
@@ -32,13 +48,21 @@ function Cart(item) {
 
         const dbQuery = getFirestore()  
         dbQuery.collection('orders').add(order)
-        .then(resp => console.log(`your purchase order is : ${resp.id}`))
+        .then(resp => setIdOrder(resp.id))
         .catch(err=> console.log(err))
 
 
         
 
     }
+
+    const handleChange=(e)=>{
+        setFormData({
+             ...formData, 
+             [e.target.name]: e.target.value
+         })
+     }
+ 
     
     if(cartList.length === 0){
         return(
@@ -61,30 +85,36 @@ function Cart(item) {
                                 {"Quantity: "}{prod.quantity} {" - Product: "} {prod.product.brand} {" - Price: U$S"} {(prod.product.price * prod.quantity)} {<button className="btn" onClick={()=> deleteItem(prod.product.idProd)}>DELETE ITEM</button>}
                             </h5>)
                         }
-                        
 
                         <h5>
                             {`Total Price: U$S ${totalPrice()}`} 
                                 
-                        </h5>    
-                            /*para completar formulario */
-                            {/* <input type='text' name='name' placeholder='name' value={formData.name}/>
-                            <input type='text' name='phone'placeholder='tel' value={formData.phone}/>
-                            <input type='email' name='email'placeholder='email' value={formData.email}/> */}
+                        </h5> 
                         </div>
                     </Col>
 
-                    
-                    
                     <button className="btn" onClick={()=> emptyCart()}>EMPTY CART</button>
 
-                    
-                    <form
-                        onSubmit={generateOrder}>
-                             
-                            <button className="btn">GENERATE ORDER</button>
+                    <button className="btn" onClick={toggle}>GENERATE ORDER</button>
+                    <Modal active={active} toggle={toggle}>
+                        
+                        <form
+                            
+                            onSubmit={generateOrder}
+                            onChange={handleChange}
+                            
+                        >
+                            
+                                <input type='text' name='name' placeholder='NAME' value={formData.name}/>
+                                <input type='text' name='phone'placeholder='PHONE' value={formData.phone}/>
+                                <input type='email' name='email'placeholder='EMAIL' value={formData.email}/>
+                                <input type='email' name='validate'placeholder='VALIDATE EMAIL' value={formData.email}/>
+                                <button className="btn" >SEND</button>
                         </form>
-                
+                        <section>
+                            {idOrder!==''&& <label>ORDER ID: {idOrder}</label> }
+                        </section>
+                    </Modal>
                 </Row>
             )
         } 

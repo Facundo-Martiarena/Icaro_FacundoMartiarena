@@ -39,7 +39,7 @@ const ItemCount = ({stock, onAdd}) => {
                     {count}
                 <button className="btn" onClick={subtract}>-</button>
                 {state ?
-                    <button className="btn" onClick={addToCart}>   ADD TO CART   </button>
+                    <button className="btn-add" onClick={addToCart}> ADD TO CART </button>
                                             :
                     <>
                         <Link to="/cart">
