@@ -19,46 +19,56 @@ function Cart(item) {
         setActive(!active);
     }
 
-    const [formData, setFormData] = useState({
+    const [data, setData] = useState({
         name:'',
         phone:'',
-        email: ''
+        email: '',
+        validate: '',
     })
  
+    const [idOrBool, setIdOrBool] = useState(true);
+
+
 
     const generateOrder = (e) => {
-        e.preventDefault()
+
+
+
+            e.preventDefault();
+
+            
+            const order = {};
+            order.date = firebase.firestore.Timestamp.fromDate(new Date());  
+
+            
+            order.buyer = data;
+            order.total = totalPrice();
 
         
-        const order = {}
-        order.date = firebase.firestore.Timestamp.fromDate(new Date());  
+            order.items = cartList.map(cartItem => {
+                const id = cartItem.product.idProd
+                const name = cartItem.product.brand
+                const price = cartItem.product.price * cartItem.quantity
 
-
-        order.buyer = formData;
-        order.total = totalPrice()
-
-      
-        order.items = cartList.map(cartItem => {
-            const id = cartItem.product.idProd
-            const name = cartItem.product.brand
-            const price = cartItem.product.price * cartItem.quantity
-
-            return {id,name, price} 
-        })
-
-        const dbQuery = getFirestore()  
-        dbQuery.collection('orders').add(order)
-        .then(resp => setIdOrder(resp.id))
-        .catch(err=> console.log(err))
-
+                return {id,name, price} 
+            })
 
         
 
+            const dbQuery = getFirestore();  
+
+            dbQuery.collection('orders').add(order)
+            .then(resp => setIdOrder(resp.id))
+            .catch(err=> console.log(err))
+
+        
+        
+        
     }
 
     const handleChange=(e)=>{
-        setFormData({
-             ...formData, 
+        setData({
+             ...data, 
              [e.target.name]: e.target.value
          })
      }
@@ -103,17 +113,19 @@ function Cart(item) {
                             onSubmit={generateOrder}
                             onChange={handleChange}
                             
+                            
                         >
                             
-                                <input type='text' name='name' placeholder='NAME' value={formData.name}/>
-                                <input type='text' name='phone'placeholder='PHONE' value={formData.phone}/>
-                                <input type='email' name='email'placeholder='EMAIL' value={formData.email}/>
-                                <input type='email' name='validate'placeholder='VALIDATE EMAIL' value={formData.email}/>
+                                <input type='text' name='name' placeholder='NAME' value={data.name}/>
+                                <input type='text' name='phone' placeholder='PHONE' value={data.phone}/>
+                                <input type='email' name='email' placeholder='EMAIL' value={data.email}/>
+                                <input type='text' name='validate' placeholder='VALIDATE EMAIL' value={data.validate}/>
+                                
                                 <button className="btn" >SEND</button>
+                                <section>
+                                    {idOrder!==''&& idOrBool!==false && <label>ORDER ID: {idOrder}</label> }
+                                </section>
                         </form>
-                        <section>
-                            {idOrder!==''&& <label>ORDER ID: {idOrder}</label> }
-                        </section>
                     </Modal>
                 </Row>
             )
