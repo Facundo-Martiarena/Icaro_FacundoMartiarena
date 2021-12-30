@@ -3,17 +3,22 @@ import { useState } from 'react';
 import { useCartContext } from "../context/CartContext";
 import { getFirestore } from '../service/getFirestore.js';
 import firebase from 'firebase';
+import { Card } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
 
     const { cartList, totalPrice } = useCartContext()
     const [idOrder, setIdOrder] = useState('')
+    const [orderReady, setOrderReady] = useState("false");
 
 
     const [data, setData] = useState({
         name: '',
+        lastname: '',
         email: '',
         validate: '',
+        address: '',
         phone: '',
     })
 
@@ -21,10 +26,6 @@ const Checkout = () => {
 
 
     const generateOrder = (e) => {
-
-
-
-        e.preventDefault();
 
         
         const order = {};
@@ -47,14 +48,25 @@ const Checkout = () => {
 
         const dbQuery = getFirestore();  
 
-        dbQuery.collection('orders').add(order)
+        dbQuery.collection('orders')
+        .add(order)
         .then(resp => setIdOrder(resp.id))
         .catch(err=> console.log(err))
+        .finally(setOrderReady("true"));
 
     
     
     
-}
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if (data.email === data.validate) {
+        generateOrder(data);
+        } else {
+            alert("los email son diferentes, escríbelos de nuevo.");
+        }
+    }
 
     const handleChange = (e) => {
         setData({
@@ -69,7 +81,7 @@ const Checkout = () => {
 
 
     return (
-        <>
+        <Card style={{ width: '25rem', alignItems: 'center', marginLeft: 500, marginTop: 50 }}>
             <div>
                 
 
@@ -88,7 +100,7 @@ const Checkout = () => {
                         }
                         <hr/>
                         <h5>
-                            {`Total Price: U$S ${totalPrice()}`} 
+                            {`TOTAL PRICE: USD ${totalPrice()}`} 
                         </h5>
                     </td>
                 </tr>
@@ -97,21 +109,29 @@ const Checkout = () => {
 
             <div>
                 <form
-                    onSubmit={generateOrder} 
+                    onSubmit={handleSubmit} 
                     onChange={handleChange}
                     >
                     <table>
                     
                         
                     <hr/>
-                        <label>Ingrese sus datos</label>
-                        <div>
+                        <Card.Title>ENTER THE DATA TO BE ABLE TO SEND THE SHIPMENT</Card.Title>
+                        <div style={{marginLeft: 40, marginTop: 15}}>
                             <tr>
                                 <td>
                                     <label>Name</label>
                                 </td>
                                 <td>
                                     <input type='text' name='name' value={data.name}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Last Name</label>
+                                </td>
+                                <td>
+                                    <input type='text' name='lastname' value={data.lastname}/>
                                 </td>
                             </tr>
                             <tr>
@@ -137,19 +157,37 @@ const Checkout = () => {
                                 <td>
                                     <input type='text' name='validate' value={data.validate}/>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>
-                                    <button className="btn">Checkout</button>
+                                    <label>Address</label>
                                 </td>
+                                <td>
+                                    <input type='text' name='address' value={data.address}/>
+                                </td>
+
                             </tr>
+                            
                             
                         </div>
                         </table> 
                         <div>
+                            <td>
+                            {orderReady === "false" ?
+
+                                (
+                                    <button className="btn" style={{marginLeft: 150, marginTop: 15}}>Checkout</button>
+                                )
+                                
+                                :
+                                
+                                (<Link to={'/products'}>
+                                    <button className="btn" style={{marginLeft: 120, marginTop: 15}}>BACK TO PRODUCTS</button>
+                                </Link>)
+                            }
+                            </td>
                             <section>
-                                {idOrder!=='' && <label>ORDER ID: {idOrder}, Precio Total: USD {totalPrice()}</label>}
+                                {idOrder!=='' && <label>ORDER ID: {idOrder}, TOTAL PRICE: USD {totalPrice()}</label>}
                             </section>
 
                         </div>
@@ -160,7 +198,7 @@ const Checkout = () => {
                 </form>
 
             </div>
-        </>
+        </Card>
     )
 }
 

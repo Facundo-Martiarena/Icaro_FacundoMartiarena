@@ -11,7 +11,7 @@ const Brief = () => {
             {"Quantity: "}{prod.quantity}
             {" - Product: "} {prod.product.brand} 
             {" - "} {prod.product.model}
-            {" - Price: U$S"} {(prod.product.price * prod.quantity)} 
+            {" - Price: USD"} {(prod.product.price * prod.quantity)} 
             {" -- "}
             {<button className="btn" onClick={()=> deleteItem(prod.product.idProd)}>DELETE ITEM</button>}
             
@@ -24,7 +24,7 @@ const Brief = () => {
             {brief}
             <hr/>
             <h5>
-                {`| Total Price: U$S ${totalPrice()} |`} 
+                {`| TOTAL PRICE: USD ${totalPrice()} |`} 
             </h5>
                    
         </div>

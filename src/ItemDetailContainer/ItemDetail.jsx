@@ -43,7 +43,7 @@ export const ItemDetail = ( {item} ) => {
                     {item.model}               
                 </Card.Text>
                 <Card.Text>
-                    U$S{" "}{item.price}
+                    USD{" "}{item.price}
                 </Card.Text>
                 <Button variant="primary">
                   <ItemCount initial='1' stock={item.stock} onAdd={onAdd}/>
@@ -54,7 +54,7 @@ export const ItemDetail = ( {item} ) => {
 
   }else{
     return(
-      alert("No hay producto")
+      alert("No products")
     )
   }
 
