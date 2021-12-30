@@ -15,18 +15,18 @@ export default function Item ({item}) {
 
     return (
         <>        
-                <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>
-                    <div className="item" onClick={showModel}>
-                                <img className="imag" src={item.photoURL} width={item.ancho} alt="foto"/>
-                        <div  key={item.id} className="card">
-                            
-                                <h5 className="brand">{item.brand} </h5>
-                                {string !== '' && <Label>{string}</Label> }
-                                <p className="model">{item.model} </p>                                
-                            
-                        </div>
+            <Link to={`/item/${item.id}`} style={{ textDecoration: 'none' }}>
+                <div className="item" onClick={showModel} title="Detail">
+                            <img className="imag" src={item.photoURL} width={item.ancho} alt="foto"/>
+                    <div  key={item.id} className="card">
+                        
+                            <h5 className="brand">{item.brand} </h5>
+                            {string !== '' && <Label>{string}</Label> }
+                            <p className="model">{item.model} </p>                                
+                        
                     </div>
-                </Link>
+                </div>
+            </Link>
           
         </>
     )

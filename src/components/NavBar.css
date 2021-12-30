@@ -1,6 +1,6 @@
 ul {
     
-    background-color: rgb(10, 9, 9);    
+    background: -webkit-gradient(linear, left top, right top, from(#050505), to(#17574e));    
     list-style-type: none;
     margin: 0;
     overflow: hidden;
@@ -32,11 +32,12 @@ ul {
   li {
     
     float: right;
+    color: black;
+    font-weight: bold;
   }
   
   li a {
     display: block;
-    color: white;
     display: flex;
     align-items: center;
     text-align: center;
@@ -55,18 +56,13 @@ ul {
     text-decoration: none;
   }
 
-  li a:hover {
+  li:hover {
    
-    color: rgb(10, 237, 245);
-    /* background: linear-gradient(#5D9B9B, #046e60); */
-    /* border-radius: 40%;   */
+    color: rgb(245, 10, 22);
+    
   }
   
-  .addToCart:hover {
-    
-    /* background: linear-gradient(#5D9B9B, #046e60);
-    border-radius: 40%;     */
-  }
+ 
   
   .Header-logo {
     

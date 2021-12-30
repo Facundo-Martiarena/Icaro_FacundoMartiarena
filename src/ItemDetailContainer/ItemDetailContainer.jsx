@@ -13,7 +13,9 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   const { idProd } = useParams();
+
   useEffect(() => {
+
     const db = getFirestore()
     db.collection('productos').doc(idProd).get()
     .then( res => {        
@@ -22,9 +24,10 @@ const ItemDetailContainer = () => {
     .catch(err => console.log(err))
     .finally(()=> setLoading(false))
     
-    // eslint-disable-next-line       
-  },[])  
+           
+  },[idProd])  
 
+  
 
   return (
     <div className="containerFather">
@@ -32,7 +35,7 @@ const ItemDetailContainer = () => {
                 {loading 
                   ?
                 <img className="loadGIF" src="https://i.ibb.co/3hpBN0Z/load.gif" alt="load" border="0"/> 
-                  :
+                  : 
                 <ItemDetail item = { item }/>}
                 
             </div>

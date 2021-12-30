@@ -12,7 +12,7 @@ export const ItemDetail = ( {item} ) => {
     const [stock, setStock] = useState(0);
 
     const [count, setCount] = useState(1);
-    const { cartList, addProduct } = useCartContext()
+    const { addProduct } = useCartContext()
 
     
 
@@ -31,26 +31,33 @@ export const ItemDetail = ( {item} ) => {
   }
 
 
+  if(item){
+     
+      return (
+    
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={item.photoURL} />
+              <Card.Body>
+                <Card.Title>{item.brand}</Card.Title>
+                <Card.Text>
+                    {item.model}               
+                </Card.Text>
+                <Card.Text>
+                    U$S{" "}{item.price}
+                </Card.Text>
+                <Button variant="primary">
+                  <ItemCount initial='1' stock={item.stock} onAdd={onAdd}/>
+                </Button>
+              </Card.Body>
+            </Card>
+      )
+
+  }else{
+    return(
+      alert("No hay producto")
+    )
+  }
 
 
-  return (
-
-
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={item.photoURL} />
-          <Card.Body>
-            <Card.Title>{item.brand}</Card.Title>
-            <Card.Text>
-                {item.model}               
-            </Card.Text>
-            <Card.Text>
-                U$S{" "}{item.price}
-            </Card.Text>
-            <Button variant="primary">
-              <ItemCount initial='1' stock={item.stock} onAdd={onAdd}/>
-            </Button>
-          </Card.Body>
-        </Card>
-  )
 }
 

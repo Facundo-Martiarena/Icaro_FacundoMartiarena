@@ -8,6 +8,7 @@
     height: 18em;
     margin-top: 10px;
     margin-left: 0%;
+    padding: 10px 10px 10px 10px;
     
     
 }
@@ -22,6 +23,9 @@
     border-color: transparent;
     
 }
+
+
+
 
 .btn{
     
@@ -48,6 +52,31 @@
 .btn-white:hover{
     background-color: white;
     color: white;
+}
+
+.root{
+    margin: 0;
+}
+
+.content {
+    max-width: 345;
+    vertical-align: 'middle';
+    transform: 'translateZ(0)';
+    box-shadow: '0 0 1px rgba(0, 0, 0, 0.5)';
+    backface-visibility: 'hidden';
+    
+    
+    
+  }
+
+.media{
+    height: 200;
+}
+
+.paper {
+    background-color: '#FAF5E1';
+    padding: theme-spacing(2);
+  
 }
 
 .brand{

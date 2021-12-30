@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './logo.png';
+import ItemListContainer from '../container/ItemListContainer'
 import './HomePage.css'
 
 
@@ -8,20 +8,17 @@ import './HomePage.css'
 const HomePage = () => {
 
     
+    
     return (
 
-        // <div className='imag'>
-        //     <a href="https://ibb.co/273G3Vk"><img src="https://i.ibb.co/C5KRKCH/homepage.jpg" alt="homepage" border="0"/></a>
-        // </div>
+        
         <div className="HomePage">
             <header className="PPal-header">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                <img className='imagHP' src="https://i.ibb.co/C5KRKCH/homepage.jpg" alt="homepage" border="0"/>
-                {/* <p>
-                    Welcome to ÍCARO, the best place to buy sports shoes.
-                </p> */}
-                
+                <img className='imagHP' src="https://i.ibb.co/C5KRKCH/homepage.jpg" alt="homepage" border="0"/>                
             </header>
+            <body className="PPal-body">
+                <ItemListContainer/>
+            </body>
             
         </div>
     )
