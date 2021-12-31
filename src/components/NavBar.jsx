@@ -41,11 +41,7 @@ const NavBar = () => {
                 </Link>
                 <Link to='/'>
                     <li><a>Home</a></li>
-                </Link>
-                
-                
-
-                
+                </Link>    
                 
             </ul>
         </div>

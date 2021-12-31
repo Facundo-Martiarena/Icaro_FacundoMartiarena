@@ -5,10 +5,11 @@ import { getFirestore } from '../service/getFirestore.js';
 import firebase from 'firebase';
 import { Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Checkout = () => {
 
-    const { cartList, totalPrice } = useCartContext()
+    const { cartList, totalPrice, emptyCart } = useCartContext()
     const [idOrder, setIdOrder] = useState('')
     const [orderReady, setOrderReady] = useState("false");
 
@@ -58,13 +59,28 @@ const Checkout = () => {
     
     
     }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        if (data.email === data.validate) {
-        generateOrder(data);
-        } else {
-            alert("los email son diferentes, escríbelos de nuevo.");
+        if(data.name === '' || data.lastname === '' || data.email === '' || data.address === '' || data.phone === ''){
+            
+            Swal.fire("Please fill all the fields")
+        }else{
+            if (data.email === data.validate) {
+                generateOrder(data);
+                (Swal.fire({
+                    icon: 'success',
+                    title: 'Order generated!',
+                    showConfirmButton: false,
+                    timer: 2000 
+
+                }))
+                
+            } else {
+                
+                Swal.fire("e-mails do not match");
+            }
         }
     }
 
@@ -178,11 +194,11 @@ const Checkout = () => {
                                 (
                                     <button className="btn" style={{marginLeft: 150, marginTop: 15}}>Checkout</button>
                                 )
-                                
+
                                 :
                                 
                                 (<Link to={'/products'}>
-                                    <button className="btn" style={{marginLeft: 120, marginTop: 15}}>BACK TO PRODUCTS</button>
+                                    <button className="btn" style={{marginLeft: 120, marginTop: 15}} onClick={() => emptyCart()}>BACK TO PRODUCTS</button>
                                 </Link>)
                             }
                             </td>
@@ -190,8 +206,10 @@ const Checkout = () => {
                                 {idOrder!=='' && <label>ORDER ID: {idOrder}, TOTAL PRICE: USD {totalPrice()}</label>}
                             </section>
 
-                        </div>
+
+                        </div >
                         
+                       
 
                     
 
